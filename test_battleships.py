@@ -46,6 +46,9 @@ def test_check_if_hits1():
     #provide at least five tests in total for check_if_hits by the project submission deadline
 
 def test_hit1():
+    fleet = [(1,2,False,3,{(1,2),(2,2),(3,2)}),(3,0,False,2,{(1,2),(4,0)}),(5,3,T,2,{(5,3),(5,4)}),(8,1,True,2,{(8,1),(8,2)})]
+    assert hit(3,2,fleet) == ((1,2,False,3,{(1,2),(2,2),(3,2)}),[(1,2,False,2,{(1,2),(2,2)}),(3,0,False,2,{(1,2),
+                                                  (4,0)}),(5,3,T,2,{(5,3),(5,4)}),(8,1,True,2,{(8,1),(8,2)})])
     #add at least one test for hit by the deadline of session 7 assignment
     #provide at least five tests in total for hit by the project submission deadline
 
