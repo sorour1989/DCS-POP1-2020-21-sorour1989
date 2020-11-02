@@ -31,10 +31,15 @@ def test_ok_to_place_ship_at1():
     #provide at least five tests in total for ok_to_place_ship_at by the project submission deadline
 
 def test_place_ship_at1():
+    ship1,ship2 = (2,4,True,2),(5,6,True,1)
+    fleet = [ship1,ship2]
+    new_ship = (7,3,True,4)
+    assert place_ship_at(new_ship,fleet) == [ship1,ship2,new_ship]
     #add at least one test for place_ship_at by the deadline of session 7 assignment
     #provide at least five tests in total for place_ship_at by the project submission deadline
 
 def test_check_if_hits1():
+   
     #add at least one test for check_if_hits by the deadline of session 7 assignment
     #provide at least five tests in total for check_if_hits by the project submission deadline
 
