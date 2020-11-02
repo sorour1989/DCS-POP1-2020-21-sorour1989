@@ -7,7 +7,7 @@ def test_is_sunk1():
     #add at least four more tests for is_sunk by the project submission deadline
 
 def test_ship_type1():
-    s = 4
+    s = (3, 2, True, 4, {(3,2), (3,3), (3,4), (3,5)})
     assert ship_type(s) == "battleship"
     
      
@@ -15,6 +15,10 @@ def test_ship_type1():
     #provide at least five tests in total for ship_type by the project submission deadline
 
 def test_is_open_sea1():
+    ship1,ship2 = (2,4,True,2,{}),(5,6,True,1,{})
+    fleet = [ship1,ship2]
+    assert is_open_sea(4,2,fleet) == True
+    
     #add at least one test for open_sea by the deadline of session 7 assignment
     #provide at least five tests in total for open_sea by the project submission deadline
 
