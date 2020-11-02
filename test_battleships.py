@@ -39,20 +39,22 @@ def test_place_ship_at1():
     #provide at least five tests in total for place_ship_at by the project submission deadline
 
 def test_check_if_hits1():
-     fleet = [(1,2,False,3,{(1,2),(2,2),(3,2)}),(3,0,False,2,{(1,2),(4,0)}),(5,3,T,2,{(5,3),(5,4)}),(8,1,True,2,{(8,1),(8,2)})]
+     fleet = [(1,2,False,3,{(1,2),(2,2),(3,2)}),(3,0,False,2,{(3,0),(4,0)}),(5,3,T,2,{(5,3),(5,4)}),(8,1,True,2,{(8,1),(8,2)})]
     assert check_if_hits(5,4,fleet) == True
    
     #add at least one test for check_if_hits by the deadline of session 7 assignment
     #provide at least five tests in total for check_if_hits by the project submission deadline
 
 def test_hit1():
-    fleet = [(1,2,False,3,{(1,2),(2,2),(3,2)}),(3,0,False,2,{(1,2),(4,0)}),(5,3,T,2,{(5,3),(5,4)}),(8,1,True,2,{(8,1),(8,2)})]
+    fleet = [(1,2,False,3,{(1,2),(2,2),(3,2)}),(3,0,False,2,{(3,0),(4,0)}),(5,3,T,2,{(5,3),(5,4)}),(8,1,True,2,{(8,1),(8,2)})]
     assert hit(3,2,fleet) == ((1,2,False,3,{(1,2),(2,2),(3,2)}),[(1,2,False,2,{(1,2),(2,2)}),(3,0,False,2,{(1,2),
                                                   (4,0)}),(5,3,T,2,{(5,3),(5,4)}),(8,1,True,2,{(8,1),(8,2)})])
     #add at least one test for hit by the deadline of session 7 assignment
     #provide at least five tests in total for hit by the project submission deadline
 
 def test_are_unsunk_ships_left1():
+    fleet = [(1,2,False,3,{(1,2),(2,2),(3,2)}),(8,1,True,2,{(8,1),(8,2)})]
+    assert are_unsunk_ships_left(fleet) == True
     #add at least one test for are_unsunk_ships_left by the deadline of session 7 assignment
     #provide at least five tests in total for are_unsunk_ships_left by the project submission deadline
     
