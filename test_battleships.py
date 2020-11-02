@@ -39,7 +39,7 @@ def test_place_ship_at1():
     #provide at least five tests in total for place_ship_at by the project submission deadline
 
 def test_check_if_hits1():
-     fleet = [(1,2,False,3,{(1,2),(2,2),(3,2)}),(3,0,False,2,{(3,0),(4,0)}),(5,3,T,2,{(5,3),(5,4)}),(8,1,True,2,{(8,1),(8,2)})]
+     fleet = [(1,2,False,3,{(1,2),(2,2),(3,2)}),(3,0,False,2,{(3,0),(4,0)}),(5,3,True,2,{(5,3),(5,4)}),(8,1,True,2,{(8,1),(8,2)})]
     assert check_if_hits(5,4,fleet) == True
    
     #add at least one test for check_if_hits by the deadline of session 7 assignment
