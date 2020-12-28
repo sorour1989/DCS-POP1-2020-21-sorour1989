@@ -5,7 +5,7 @@ def test_is_sunk1():
     s = (2, 3, False, 3, {(2,3), (3,3), (4,3)})
     assert is_sunk(s) == True
     #add at least four more tests for is_sunk by the project submission deadline
-    #BLABLABLA
+    
 
 def test_ship_type1():
     s = (3, 2, True, 4, {(3,2), (3,3), (3,4), (3,5)})
