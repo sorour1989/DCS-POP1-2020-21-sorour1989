@@ -1,9 +1,15 @@
 #see the readme.md file for description and data 
 
+#def right_shot(ship):
+    #if ship[0]is.integer()
+
+
+
 
 def is_sunk(ship):
-    #remove pass and add your implementation
-    pass
+    if len(ship[4]) == ship[3]:
+        return('The ship is sunk')
+
 
 def ship_type(ship):
     #remove pass and add your implementation
@@ -58,7 +64,7 @@ def main():
         else:
             print("You missed!")
 
-        if not are_unsunk_shis_left(current_fleet): game_over = True
+        if not are_unsunk_ships_left(current_fleet): game_over = True
 
     print("Game over! You required", shots, "shots.")
 

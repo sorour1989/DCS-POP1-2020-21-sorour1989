@@ -1,9 +1,10 @@
 import pytest
 from battleships import *
 
+#@pytest.test.parametrize('ship','s',[True])
 def test_is_sunk1():
-    s = (2, 3, False, 3, {(2,3), (3,3), (4,3)})
-    assert is_sunk(s) == True
+    s = (2, 3, False, 2, {(2, 3), (1, 3)})
+    assert is_sunk(s) == 'True'
     #add at least four more tests for is_sunk by the project submission deadline
     
 
@@ -12,13 +13,13 @@ def test_ship_type1():
     assert ship_type(s) == "battleship"
     
      
-    #add at least one test for ship_type by the deadline of session 7 assignment
-    #provide at least five tests in total for ship_type by the project submission deadline
+    # add at least one test for ship_type by the deadline of session 7 assignment
+    # provide at least five tests in total for ship_type by the project submission deadline
 
 def test_is_open_sea1():
-    ship1,ship2 = (2,4,True,2),(5,6,True,1)
-    fleet = [ship1,ship2]
-    assert is_open_sea(4,2,fleet) == True
+    ship1, ship2 = (2, 4, True, 2), (5, 6, True, 1)
+    fleet = [ship1, ship2]
+    assert is_open_sea(4, 2, fleet) == True
     
     #add at least one test for open_sea by the deadline of session 7 assignment
     #provide at least five tests in total for open_sea by the project submission deadline
@@ -41,7 +42,7 @@ def test_place_ship_at1():
 
 def test_check_if_hits1():
      fleet = [(1,2,False,3,{(1,2),(2,2),(3,2)}),(3,0,False,2,{(3,0),(4,0)}),(5,3,True,2,{(5,3),(5,4)}),(8,1,True,2,{(8,1),(8,2)})]
-    assert check_if_hits(5,4,fleet) == True
+     assert check_if_hits(5,4,fleet) == True
    
     #add at least one test for check_if_hits by the deadline of session 7 assignment
     #provide at least five tests in total for check_if_hits by the project submission deadline
