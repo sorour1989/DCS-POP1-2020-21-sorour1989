@@ -8,7 +8,9 @@
 
 def is_sunk(ship):
     if len(ship[4]) == ship[3]:
-        return('The ship is sunk')
+        return 'True'
+    else:
+        return 'False'
 
 
 def ship_type(ship):
