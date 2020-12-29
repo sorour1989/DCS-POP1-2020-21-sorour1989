@@ -14,8 +14,19 @@ def is_sunk(ship):
 
 
 def ship_type(ship):
-    #remove pass and add your implementation
-    pass
+    length = [1, 2, 3, 4]
+    if ship[3] not in length:
+        return "wrong length"
+    else:
+        if ship[3] == length[0]:
+            return "Submarine"
+        elif ship[3] == length[1]:
+            return "Destroyer"
+        elif ship[3] == length[2]:
+            return "Cruiser"
+        else:
+            return "Battleship"
+
 
 def is_open_sea(row, column, fleet):
     #remove pass and add your implementation
