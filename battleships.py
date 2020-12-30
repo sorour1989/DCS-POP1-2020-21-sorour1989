@@ -3,6 +3,14 @@
 #def right_shot(ship):
     #if ship[0]is.integer()
 
+# defining classes
+
+class Ship:
+    type = "UNDEFINED"
+    length = 0
+    _hit = 0
+    hit_coords = list()
+
 
 
 
@@ -11,6 +19,10 @@ def is_sunk(ship):
         return 'True'
     else:
         return 'False'
+
+def squares_occupied(ship):
+
+
 
 
 def ship_type(ship):
@@ -29,8 +41,30 @@ def ship_type(ship):
 
 
 def is_open_sea(row, column, fleet):
-    #remove pass and add your implementation
-    pass
+    for ship in fleet:
+        rows_squares = [ship[0]]
+        column_squares = [ship[1]]
+        if ship[2] == 'True':
+            for i in range(ship[3]-1):
+                ship[1] += 1
+                column_squares.append(ship[1])
+        else:
+            for i in range(ship[3]-1):
+                ship[0] += 1
+                rows_squares.append(ship[0])
+    if row in rows_squares or column in column_squares:
+        return 'False'
+    else:
+        return 'True'
+
+
+
+
+
+
+
+
+
 
 def ok_to_place_ship_at(row, column, horizontal, length, fleet):
     #remove pass and add your implementation
