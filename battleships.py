@@ -2,15 +2,44 @@
 
 #def right_shot(ship):
     #if ship[0]is.integer()
+#--------------
 
 # defining classes
+# define classes first, then test all of the methods for another time
+# class Ship:
+#     type = "UNDEFINED"
+#     length = 0
+#     _hit = 0     # _ means attribute is private
+#     hit_coords = list()
+#---------------
+import random
+import numpy as np
 
-class Ship:
-    type = "UNDEFINED"
-    length = 0
-    _hit = 0
-    hit_coords = list()
 
+def ship():
+
+    row = random.randint(0,9)
+    column = random.randint(0,9)
+    horizontal = random.choice([True,False])
+    length = random.randint(1,4)
+    ships = tuple(np.array([row, column, horizontal, length]))
+
+    return ships
+
+f= ship()
+print(f)
+
+
+
+
+
+
+
+
+
+
+
+def fleet
 
 
 
@@ -20,7 +49,8 @@ def is_sunk(ship):
     else:
         return 'False'
 
-def squares_occupied(ship):
+
+#def squares_occupied(ship):
 
 
 
@@ -61,22 +91,20 @@ def is_open_sea(row, column, fleet):
 
 
 
-
-
-
-
-
 def ok_to_place_ship_at(row, column, horizontal, length, fleet):
     #remove pass and add your implementation
     pass
+
 
 def place_ship_at(row, column, horizontal, length, fleet):
     #remove pass and add your implementation
     pass
 
+
 def randomly_place_all_ships():
     #remove pass and add your implementation
     pass
+
 
 def check_if_hits(row, column, fleet):
     #remove pass and add your implementation
