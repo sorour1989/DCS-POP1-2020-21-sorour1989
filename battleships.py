@@ -115,6 +115,23 @@ def get_type(ship):
     return SHIP_TYPES.get(length, "WRONG LENGTH")
 
 
+def get_sea_map(fleet):
+    # @lru_cache(1024)
+    def func(*flt):
+        sea = zeros([10, 10], dtype=bool)
+
+        for row, col, horizontal, length, _ in flt:
+            if horizontal:
+                sea[row, col:col + length] = True
+                continue
+
+            sea[row: row + length, col] = True
+
+        return sea
+    return func(*fleet)
+
+
+
 
 
 def ok_to_place_ship_at(row, column, horizontal, length, fleet):
