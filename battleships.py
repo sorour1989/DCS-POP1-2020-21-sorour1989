@@ -131,6 +131,24 @@ def get_sea_map(fleet):
     return func(*fleet)
 
 
+def is_open_sea(row: int, col: int, fleet) -> bool:
+    sea = get_sea_map(fleet)
+
+    prev_row = max(row - 1, 0)
+    next_row = min(row + 2, sea.shape[0])
+
+    prev_col = max(col - 1, 0)
+    next_col = min(col + 2, sea.shape[1])
+
+    matrix = sea[prev_row: next_row, prev_col: next_col]
+
+    for row in matrix:
+        if any(row):
+            return False
+
+    return True
+
+
 
 
 
