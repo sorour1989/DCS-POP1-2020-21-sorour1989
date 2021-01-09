@@ -1,49 +1,63 @@
+from shipping.battleships import *
 import pytest
-from battleships import *
 
 
-# @pytest.test.parametrize('ship','s',[True])
-def test_is_sunk1():
-    s = (2, 3, False, 2, {(2, 3), (1, 3)})
-    assert is_sunk(s) == 'True'
+@pytest.mark.parametrize("num1, result",
+                         [
+                             ((2, 3, False, 2, 2), True),
+                             ((6, 1, True, 4, 3), False),
+                             ((5, 9, False, 3, 3), True),
+                             ((0, 9, True, 4, 2), False),
+                             (("1", 7, True, 3, 1), False)
+                         ])
+def test_is_sunk(num1, result):
 
-
-def test_is_sunk2():
-    s = (5, 3, True, 3, {(5, 4)})
-    assert is_sunk(s) == 'False'
-    # add at least four more tests for is_sunk by the project submission deadline
-
-
-
+    assert is_sunk(num1) is result
 
 
 
 
 
-def test_ship_type1():
-    s = (3, 2, True, 4, {(3, 2), (3, 3), (3, 4), (3, 5)})
-    assert ship_type(s) == "Battleship"
-
-    # add at least one test for ship_type by the deadline of session 7 assignment
-    # provide at least five tests in total for ship_type by the project submission deadline
-
-
-def test_is_open_sea1():
-    ship1, ship2 = (2, 4, True, 2), (5, 6, True, 1)
-    fleet = [ship1, ship2]
-    assert is_open_sea(4, 2, fleet) == 'True'
-
-    # add at least one test for open_sea by the deadline of session 7 assignment
-    # provide at least five tests in total for open_sea by the project submission deadline
+@pytest.mark.parametrize("ship, result",
+                         [
+                             ((2, 3, False, 2, 2), "DESTROYER"),
+                             ((6, 1, True, 4, 3), "BATTLESHIP"),
+                             ((5, 9, False, 3, 3), "CRUISER"),
+                             ((0, 9, True, 5, 2), "WRONG LENGTH"),
+                             ((1, 7, True, 1, 1), "SUBMARINE")
+                         ])
+def test_ship_type1(ship, result):
+    assert ship_type(ship) == result
 
 
-def test_ok_to_place_ship_at1():
-    ship1, ship2 = (2, 4, True, 2), (5, 6, True, 1)
-    fleet = [ship1, ship2]
-    new_ship = (1, 2, False, 3)
-    assert ok_to_place_ship_at(is_open_sea(new_ship)) == 'False'
-    # add at least one test for ok_to_place_ship_at by the deadline of session 7 assignment
-    # provide at least five tests in total for ok_to_place_ship_at by the project submission deadline
+@pytest.mark.parametrize("row, col, fleet, result",
+                         [
+                            (2, 4, [(2, 4, True, 2, 0), (5, 6, True, 1, 0)], False),
+                            (6, 7, [(6, 1, False, 3, 0), (9, 3, True, 2, 0), (5, 4, True, 4, 0)], False),
+                            (1, 0, [(5, 7, False, 1, 0), (8, 0, True, 3, 0), (2, 0, True, 2, 0)], False),
+                            (0, 9, [(7, 1, False, 3, 0)], True),
+                            (5, 5, [(0, 9, False, 1, 0), (2, 0, False, 3, 0), (5, 9, False, 3, 0),
+                                    (7, 0, True, 4, 0)], True)
+                         ]
+                         )
+def test_is_open_sea(row, col, fleet, result):
+    assert is_open_sea(row, col, fleet) is result
+
+
+
+@pytest.mark.parametrize("row, col, horizontal, length, fleet, result",
+                         [
+                            (2, 4, True, 2, [(2, 4, True, 2, 0), (5, 6, True, 1, 0)], False),
+                            (1, 2, False, 1, [(6, 1, False, 3, 0), (9, 3, True, 2, 0), (5, 4, True, 4, 0)], True),
+                            (3, 5, True, 2, [(5, 7, False, 1, 0), (8, 0, True, 3, 0), (2, 0, True, 2, 0)], True),
+                            (8, 3, True, 2, [(7, 1, False, 3, 0)], True),
+                            (5, 5, True, 4, [(0, 9, False, 1, 0), (2, 0, False, 3, 0), (5, 9, False, 3, 0),
+                             (7, 0, True, 4, 0)], False)
+                         ]
+                         )
+def test_ok_to_place_ship_at(row, col, horizontal, length, fleet, result):
+    assert ok_to_place_ship_at(row, col, horizontal, length, fleet) is result
+-------
 
 
 def test_place_ship_at1():
@@ -59,14 +73,16 @@ def test_check_if_hits1():
     fleet = [(1, 2, False, 3, {(1, 2), (2, 2), (3, 2)}),
          (3, 0, False, 2, {(3, 0), (4, 0)}), (5, 3, True, 2,
          {(5, 3), (5, 4)}), (8, 1, True, 2, {(8, 1), (8, 2)})]
-    assert check_if_hits(5, 4, fleet) == 'True'
+    assert check_if_hits(5, 4, fleet) is True
 
 
 # add at least one test for check_if_hits by the deadline of session 7 assignment
 # provide at least five tests in total for check_if_hits by the project submission deadline
 
 def test_hit1():
-    fleet = [(1, 2, False, 3, {(1, 2), (2, 2), (3, 2)}), (3, 0, False, 2, {(3, 0), (4, 0)}),
+    fleet = [
+        (1, 2, False, 3, {(1, 2), (2, 2), (3, 2)}),
+        (3, 0, False, 2, {(3, 0), (4, 0)}),
              (5, 3, True, 2, {(5, 3), (5, 4)}), (8, 1, True, 2, {(8, 1), (8, 2)})]
     assert hit(3, 2, fleet) == (
         (1, 2, False, 3, {(1, 2), (2, 2), (3, 2)}), [(1, 2, False, 2, {(1, 2), (2, 2)}), (3, 0, False, 2, {(1, 2),
@@ -79,6 +95,6 @@ def test_hit1():
 
 def test_are_unsunk_ships_left1():
     fleet = [(1, 2, False, 3, {(1, 2), (2, 2), (3, 2)}), (8, 1, True, 2, {(8, 1), (8, 2)})]
-    assert are_unsunk_ships_left(fleet) == True
+    assert are_unsunk_ships_left(fleet) is True
     # add at least one test for are_unsunk_ships_left by the deadline of session 7 assignment
     # provide at least five tests in total for are_unsunk_ships_left by the project submission deadline
