@@ -62,13 +62,31 @@ def test_ok_to_place_ship_at(row, col, horizontal, length, fleet, result):
 
 @pytest.mark.parametrize("row, col, horizontal, length, fleet, result",
                          [
-                            (1, 4, True, 2, [(2, 4, True, 2, 0), (5, 6, True, 1, 0)], "Conflict detected.")
+                            (1, 4, True, 2, [(2, 4, True, 2, 0), (5, 6, True, 1, 0)], "Conflict detected."),
+                (3, 4, False, 2, [(2, 4, True, 2, 0), (5, 6, True, 1, 0), (6, 0, False, 3, 0)], "Conflict detected.")
 
                          ]
                          )
 def test_place_ship_at(row, col, horizontal, length, fleet, result):
     with pytest.raises(RuntimeError):
         assert place_ship_at(row, col, horizontal, length, fleet) == result
+
+
+@pytest.mark.parametrize("row, col, horizontal, length, fleet, result",
+                         [
+                          (6, 0, False, 3, [(2, 4, True, 2, 0), (5, 6, True, 1, 0)], [(2, 4, True, 2, 0),
+                           (5, 6, True, 1, 0), (6, 0, False, 3, 0)]),
+                          (3, 0, False, 2, [(2, 4, True, 2, 0), (5, 6, True, 1, 0), (6, 0, False, 3, 0)], [(2, 4, True, 2, 0),
+                           (5, 6, True, 1, 0), (6, 0, False, 3, 0), (3, 0, False, 2, 0)])
+
+
+                         ]
+                         )
+def test_place_ship_at_1(row, col, horizontal, length, fleet, result):
+
+    assert place_ship_at(row, col, horizontal, length, fleet) == result
+
+---------
 
 
 def test_check_if_hits1():
