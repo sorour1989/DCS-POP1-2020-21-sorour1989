@@ -86,19 +86,22 @@ def test_place_ship_at_1(row, col, horizontal, length, fleet, result):
 
     assert place_ship_at(row, col, horizontal, length, fleet) == result
 
----------
 
-
-def test_check_if_hits1():
-    fleet = [(1, 2, False, 3, {(1, 2), (2, 2), (3, 2)}),
-         (3, 0, False, 2, {(3, 0), (4, 0)}), (5, 3, True, 2,
-         {(5, 3), (5, 4)}), (8, 1, True, 2, {(8, 1), (8, 2)})]
-    assert check_if_hits(5, 4, fleet) is True
-
-
-# add at least one test for check_if_hits by the deadline of session 7 assignment
-# provide at least five tests in total for check_if_hits by the project submission deadline
-
+@pytest.mark.parametrize("row, col, fleet, result",
+                         [
+                             (6, 0, [(2, 4, True, 2, 0), (5, 6, True, 1, 0)], False),
+                             (7, 0, [(2, 4, True, 2, 0), (5, 6, True, 1, 0), (6, 0, False, 3, 0)], True),
+                             (8, 4, [(2, 4, True, 2, 0), (5, 6, True, 1, 0), (6, 0, False, 3, 0), (3, 0, False, 2, 0)],
+                              False),
+                             (4, 0, [(2, 4, True, 2, 0), (5, 6, True, 1, 0), (6, 0, False, 3, 0), (3, 0, False, 2, 0),
+                                     (7, 3, True, 4, 0)], True),
+                             (9, 4, [(2, 4, True, 2, 0), (5, 6, True, 1, 0), (6, 0, False, 3, 0), (3, 0, False, 2, 0),
+                                     (2, 9, False, 3, 0)], False)
+                         ]
+                         )
+def test_check_if_hits(row, col, fleet, result):
+    assert check_if_hits(row, col, fleet) == result
+---------------
 def test_hit1():
     fleet = [
         (1, 2, False, 3, {(1, 2), (2, 2), (3, 2)}),
