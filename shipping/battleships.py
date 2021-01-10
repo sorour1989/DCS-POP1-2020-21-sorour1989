@@ -186,32 +186,3 @@ def randomly_place_all_ship(fleet: FleetType):
     return fleet
 
 
-# fleet_data = randomly_place_all_ship(fleet_data)
-# print(fleet_data)
-# print(visualise(fleet_data))
-
-
-
-#
-# flt_o = [
-#     (6, 6, True, 2),
-#     (5, 9, False, 3)
-# ]
-#
-# for fl in flt_o:
-#     fleet_data = place_ship_at(*fl, fleet_data)
-#
-# print(visualise(fleet_data))
-#
-# print(fleet_data.sea)
-#
-# fleet_data.place_ship_at(Destroyer(2, 2, True))
-#
-# fleet_data.randomly_place_all_ship()
-# x = fleet_data.hit(3, 4)
-# print(x)
-# print(fleet_data)
-# print(fleet_data.is_open_sea(3, 4))
-# print(fleet_data.is_open_sea(2, 2))
-#
-# print(my_fleet)
