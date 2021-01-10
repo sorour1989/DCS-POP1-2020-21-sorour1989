@@ -66,6 +66,7 @@ def main() -> NoReturn:
     sunken_ship, misses, hits = set(), set(), set()
 
 
+
     print("Enter coordinates separated by comma or press Q to exit.")
     print("Example: ROW,COLUMN")
     print("=~" * 20, end="\n\n")
@@ -103,7 +104,7 @@ def main() -> NoReturn:
 
         if not are_unsunk_ships_left(fleet_data):
             visual = visualise(fleet_data, hits, misses)
-            print(f"You've sunk 'em all in {n_shots} shots")
+            print(f"You've sunk them all in {n_shots} shots")
             print(visual)
             break
 
