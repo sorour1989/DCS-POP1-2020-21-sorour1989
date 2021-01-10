@@ -65,13 +65,12 @@ def main() -> NoReturn:
     n_shots = 0
     sunken_ship, misses, hits = set(), set(), set()
 
-
-
     print("Enter coordinates separated by comma or press Q to exit.")
     print("Example: ROW,COLUMN")
     print("=~" * 20, end="\n\n")
 
     while True:
+
         visual = visualise(fleet_data, hits, misses)
         print(visual)
         command = input(f"[SHOTS: {n_shots:<3}] >>> coordinates: ")
@@ -80,6 +79,10 @@ def main() -> NoReturn:
             break
 
         n_shots += 1
+
+        if n_shots > 100:
+            print("You exceeded the legal number of shots.\nGame Over")
+            break
 
         try:
             row, column = map(int, map(str.strip, command.split(",")))
