@@ -65,7 +65,6 @@ def main() -> NoReturn:
     n_shots = 0
     sunken_ship, misses, hits = set(), set(), set()
 
-    print(fleet_data)  # ToDo: This line is to be removed.
 
     print("Enter coordinates separated by comma or press Q to exit.")
     print("Example: ROW,COLUMN")
