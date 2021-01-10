@@ -2,7 +2,7 @@ from typing import List, Set, Tuple, Callable, NoReturn
 from shipping.battleships import (
     get_sea_map, find_index_of_ship_at, ship_type,
     is_sunk, randomly_place_all_ship, check_if_hits,
-    are_unsunk_ships_left, hit, Ship, FleetType
+    are_unsunk_ships_left, hitted, Ship, FleetType
 )
 
 
@@ -88,7 +88,7 @@ def main() -> NoReturn:
             continue
 
         if check_if_hits(row, column, fleet_data):
-            fleet_data = hit(row, column, fleet_data)
+            fleet_data = hitted(row, column, fleet_data)
             hits.add((row, column))
             print("It was a hit.")
         else:
