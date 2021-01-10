@@ -186,3 +186,52 @@ def randomly_place_all_ship(fleet: FleetType):
     return fleet
 
 
+def main():
+    fleet_data = list()
+    fleet_data = randomly_place_all_ship(fleet_data)
+    n_shots = 0
+    sunken_ship, misses, hits = set(), set(), set()
+
+
+    print("Enter coordinates separated by comma or press Q to exit.")
+    print("Example: ROW,COLUMN")
+
+    while True:
+
+        command = input(f"[SHOTS: {n_shots:<3}] >>> coordinates: ")
+
+        if command == "Q":
+            break
+
+        n_shots += 1
+
+        try:
+            row, column = map(int, map(str.strip, command.split(",")))
+        except ValueError:
+            print("Invalid input")
+            continue
+
+        if check_if_hits(row, column, fleet_data):
+            fleet_data = hitted(row, column, fleet_data)
+            hits.add((row, column))
+            print("It was a hit.")
+        else:
+            misses.add((row, column))
+            print("You missed it.")
+            continue
+
+        for ship in set(fleet_data) - sunken_ship:
+            if is_sunk(ship):
+                print(f"You have sunken a '{ship_type(ship)}'.")
+
+            sunken_ship.add(ship)
+
+        if not are_unsunk_ships_left(fleet_data):
+            print(f"You've sunk 'em all in {n_shots} shots")
+            break
+
+    print("Bye")
+
+
+if __name__ == "__main__":
+    main()
