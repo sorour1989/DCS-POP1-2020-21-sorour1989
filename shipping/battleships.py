@@ -205,6 +205,10 @@ def main():
 
         n_shots += 1
 
+        if n_shots > 100:
+            print("You exceeded the legal number of shots.\nGame Over")
+            break
+
         try:
             row, column = map(int, map(str.strip, command.split(",")))
         except ValueError:
