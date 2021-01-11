@@ -32,11 +32,7 @@ def ship_type(ship):
 
 
 def get_sea_map(fleet: FleetType):
-    """
-    input is mutable. to be cached it must be immutable.
-    :param fleet:
-    :return:
-    """
+
     @lru_cache(128)
     def func(*flt):
         sea = zeros([10, 10], dtype=bool)
