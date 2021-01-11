@@ -74,7 +74,6 @@ def main() -> NoReturn:
 
         visual = visualise(fleet_data, hits, misses)
         print(visual)
-        print(fleet_data)
         command = input(f"[SHOTS: {n_shots:<3}] >>> coordinates: ")
 
         if command == "Q":
