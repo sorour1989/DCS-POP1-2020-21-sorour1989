@@ -66,7 +66,7 @@ def main() -> NoReturn:
     sunken_ship, misses, hits = set(), set(), set()
     shoots = []
 
-    print("Enter coordinates separated by comma or press Q to exit.")
+    print("Enter coordinates 0-9 separated by comma or press Q to exit.")
     print("Example: ROW,COLUMN")
     print("=~" * 20, end="\n\n")
 
