@@ -190,7 +190,7 @@ def main():
     shoots = []
 
 
-    print("Enter coordinates separated by comma or press Q to exit.")
+    print("Enter coordinates 0 to 9 separated by comma or press Q to exit.")
     print("Example: ROW,COLUMN")
 
     while True:
