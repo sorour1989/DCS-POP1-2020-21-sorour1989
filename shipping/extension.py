@@ -64,6 +64,7 @@ def main() -> NoReturn:
     fleet_data = randomly_place_all_ship(fleet_data)
     n_shots = 0
     sunken_ship, misses, hits = set(), set(), set()
+    shoots = []
 
     print("Enter coordinates separated by comma or press Q to exit.")
     print("Example: ROW,COLUMN")
@@ -73,6 +74,7 @@ def main() -> NoReturn:
 
         visual = visualise(fleet_data, hits, misses)
         print(visual)
+        print(fleet_data)
         command = input(f"[SHOTS: {n_shots:<3}] >>> coordinates: ")
 
         if command == "Q":
@@ -90,9 +92,10 @@ def main() -> NoReturn:
             print("Invalid input")
             continue
 
-        if check_if_hits(row, column, fleet_data):
+        if check_if_hits(row, column, fleet_data) and not [row, column] in shoots:
             fleet_data = hitted(row, column, fleet_data)
             hits.add((row, column))
+            shoots.append([row, column])
             print("It was a hit.")
         else:
             misses.add((row, column))
