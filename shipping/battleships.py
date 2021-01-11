@@ -202,7 +202,7 @@ def main():
 
         n_shots += 1
 
-        if n_shots > 100:
+        if n_shots > 80:
             print("You exceeded the legal number of shots.\nGame Over")
             break
 
